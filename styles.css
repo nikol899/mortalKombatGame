@@ -1,0 +1,30 @@
+body{
+  background-image: url(/Users/brittanyhardy/Documents/Works/Projects/midterm/mortalKombatGame/cb63a0d5fca3699438831b974bb0324f.jpg);
+  background-size: 1300px;
+  max-height: 1000px;
+  max-width: 1000px;
+  justify-content: center;
+}
+.grid{
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1500px;
+  max-height: 1500px;
+  align-content: center;
+}
+.list{
+  /* justify-content: center;
+  flex-wrap: wrap; */
+}
+
+.card{
+  /* background-image: url(/Users/brittanyhardy/Documents/Works/Projects/midterm/mortalKombatGame/250px-Mortal_Kombat_Logo.png); */
+  height: 250px;
+  width: 250px;
+  background-color: black;
+  border: 3px solid blue;
+  border-radius: 20px;
+  background-image: url(/Users/brittanyhardy/Documents/Works/Projects/midterm/mortalKombatGame/250px-Mortal_Kombat_Logo.png) ;
+
+  justify-content: center;
+}

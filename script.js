@@ -1,24 +1,5 @@
 "use strict";
-$('.stack').click(function () {
-
-    $(".card").each(function (e) {
-
-        setTimeout(function () {
-            $(".card").eq(e).attr("class", "card");
-        }, e * 150)
-
-    });
-
-});
-
-$('.spread').click(function () {
-
-    $(".card").each(function (e) {
-
-        setTimeout(function () {
-            $(".card").eq(e).attr("class", "card ani" + e);
-        }, e * 150)
-
-    });
-
+let card = document.querySelector('.card');
+card.addEventListener('click', function () {
+    card.classList.toggle('is-flipped');
 });

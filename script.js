@@ -26,8 +26,8 @@ function addsEventsElements(){
         }
     }
     )};
-function cardShuffle(){
-    var currentIndex = cardsArray.length, tempCards, randomCards;
+function cardShuffle(array){
+    let currentIndex = cardsArray.length, tempCards, randomCards;
     while (currentIndex !== 0) {
         randomCards = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
@@ -36,13 +36,14 @@ function cardShuffle(){
         cardsArray[randomCards] = tempCards;
     }
 
-    return  cardsArray;
+    return  array;
 };
 
     function startGame(){
-    cardArray.sort(() => 0.5 - Math.random()); // shuffles the cards
+        cardShuffle();
         if(firstChildElement[0].value === cardsArray.firstChildElement[1].value){
             
 
         }
     }
+    

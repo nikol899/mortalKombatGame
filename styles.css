@@ -28,9 +28,7 @@ background-size: cover;
 }
 
 img.back-face{
-  /* width: 200px; */
   height:100%;
-  /* padding: 20px; */
   position: absolute;
   top: 0;
   left: 0;
@@ -43,4 +41,8 @@ img.back-face{
 .card.flip {
   transform: rotateY(180deg);
 }
-img.face-front{}
+img{
+  size: 250px;
+  width: 75px;
+  height: 75px;
+}

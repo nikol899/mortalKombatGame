@@ -10,18 +10,6 @@ cards.forEach(card => card.addEventListener('click', flipCard));
 
 
 
-let card = document.getElementsByClassName("card");
-const arrayCards = [...card];
-for( let i =0;i<cards.length; i++){
-    arrayCards[i].addEventListener("click", displayCard)
-}
-
-
-let displayCard = function () {
-    this.classList.toggle("open");
-    this.classList.toggle("show");
-    // this.classList.toggle("disabled");
-}
 
 
 

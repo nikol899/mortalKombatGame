@@ -1,32 +1,36 @@
 body{
-background-image: url(/Users/brittanyhardy/Documents/Works/Projects/midterm/mortalKombatGame/cb63a0d5fca3699438831b974bb0324f.jpg); 
+background-image: url(Sonya_Background.jpg); 
+background-size: cover;
 
 }
 
 .MK_Memory {
-  width: 640px;
-  height:640px;
+  /* width: 1040px;
+  height:840px; */
   perspective: 1000px;
-  margin: auto;
+  margin: 180px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  object-fit: contain;
 }
 .card {
-  width: calc(25% -10px);
-  height: calc(33.33% -10px);
   position: relative;
   transform-style: preserve-3d;
   transition: transform 1s;
+      flex-flow: row wrap;
+    object-fit: fill;
+    border: 3px solid gold;
 }
 .card:active{
   transform: scale(1);
 
 }
-.front-face,
-.back-face{
-  width: 100%;
+
+img.back-face{
+  /* width: 200px; */
   height:100%;
-  padding: 20px;
+  /* padding: 20px; */
   position: absolute;
   top: 0;
   left: 0;
@@ -36,7 +40,7 @@ background-image: url(/Users/brittanyhardy/Documents/Works/Projects/midterm/mort
 }
 
 
-.card.is-flipped {
+.card.flip {
   transform: rotateY(180deg);
 }
-
+img.face-front{}

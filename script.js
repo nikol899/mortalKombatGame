@@ -2,6 +2,12 @@
 let roundNumber =1;
 let flippedCards=[]; // keep track of flipped cards in the array
 let count =0; // keeps count of cards total of 12 in a deck
+let startBtn =document.getElementByclass("startBtn");
+let resetBtn =document.getElementByclass("resetBtn");
+let sec =0;
+let min =0;
+let timer =document.querySelector("timer");
+let interval =undefined;
 
 let cards = document.querySelectorAll('.card');
 function flipCard() {
@@ -21,6 +27,7 @@ function countDown(){
  }
 function addsEventsElements(){
     document.querySelector("main").addEventListener("click",function(event){
+
         if(event.target.classList.contains("startBtn")){
             
             startGame();
@@ -36,3 +43,13 @@ function addsEventsElements(){
     countDown();
 
     }
+
+function startTimer(){
+    interval = setInterval(function(){
+        timer.innerHTML =`minute ${mins} second ${secs}`;
+        second++;
+        if(second < 90){
+            
+        }
+    }
+}

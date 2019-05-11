@@ -1,16 +1,18 @@
 "use strict";
-<<<<<<< HEAD
-=======
 
 
->>>>>>> Britt_Branch
 let roundNumber =1;
 let flippedCards=[]; // keep track of flipped cards in the array
 let count =0; // keeps count of cards total of 12 in a deck
 let cardsArray=[];
+let guessOne="";
+let guessTwo="";
+let previousChoice = null;
+
 
 const cards = document.querySelectorAll('.card');
 
+// flip event
 function flipCard() {
     this.classList.toggle('flip');
 }
@@ -21,42 +23,40 @@ function setRoundNumber() {
     document.querySelector(".startBtn").innerText=`Round : ${roundNumber}`;
 }
 
-<<<<<<< HEAD
-function addsEventsElements(){
-    document.querySelector("main").addEventListener("click",function(event){
-        if(event.target.classList.contains("startBtn")){
-            startGame();
-            console.log(event);
-        }else if(event.target.classList.contains("resetBtn"));{
-            // resets the board and shuffle cards
-        }
-    }
-    )};
-function cardShuffle(array){
-    let currentIndex = cardsArray.length, tempCards, randomCards;
-    while (currentIndex !== 0) {
-        randomCards = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        tempCards = cardsArray[currentIndex];
-        cardsArray[currentIndex] = cardsArray[randomCards];
-        cardsArray[randomCards] = tempCards;
-    }
-
-    return  array;
-};
-
-    function startGame(){
-        cardShuffle();
-        if(firstChildElement[0].value === cardsArray.firstChildElement[1].value){
-            
-
-        }
-    }
-    
-=======
 let card = document.getElementsByClassName("card");
 	const arrayCards = [...card];
 	for( let i =0;i<cards.length; i++){
 	 
     }
->>>>>>> Britt_Branch
+
+if(count < 2){
+    count ++;
+    event.target.classList.add("flippedCards");
+}
+
+function matchedCards(){
+    let flippedCards = document.querySelectorAll(".card")
+    flippedCards.forEach(card =>{
+        card.classList.add("match")
+    })
+}
+
+MK_Memory.addEventListener("click",function(event){
+    if(count <2){
+        count ++;
+        if(count === 1){
+            guessOne = event.target.value
+            event.target.classList.add("selected")
+        }else{
+            guessTwo = event.target.value
+            event.target.add("selected")
+        }
+
+    if(guessOne !== "" && guessTwo !== ""){
+        if(guessOne === guessTwo){
+            matchedCards();
+        }
+    }
+} previousChoice=event.target;
+
+})

@@ -34,6 +34,7 @@ if(count < 2){
     event.target.classList.add("flippedCards");
 }
 
+
 function matchedCards(){
     let flippedCards = document.querySelectorAll(".card")
     flippedCards.forEach(card =>{
@@ -41,20 +42,31 @@ function matchedCards(){
     })
 }
 
-MK_Memory.addEventListener("click",function(event){
+function resetGuess(){
+    guessOne ="";
+    guessTwo="";
+    count =0;
+    flippedCards.forEach(function(card){
+        card.classList.remove(flippedCards);
+    });
+}
+
+cards.addEventListener("click",function(event){
     if(count <2){
         count ++;
         if(count === 1){
-            guessOne = event.target.value
-            event.target.classList.add("selected")
+            guessOne = event.target.tagName.value
+            console.log(event);
+            event.target.classList.add(".card")
         }else{
-            guessTwo = event.target.value
-            event.target.add("selected")
+            guessTwo = event.target.tagName.value
+            event.target.add(".card")
         }
 
-    if(guessOne !== "" && guessTwo !== ""){
+    if(guessOne && guessTwo ){
         if(guessOne === guessTwo){
             matchedCards();
+            resetGuess();
         }
     }
 } previousChoice=event.target;

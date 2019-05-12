@@ -38,7 +38,10 @@ img.back-face{
 
 }
 
+.match{
 
+  border: 3px solid orange;
+}
 .card.flip {
   transform: rotateY(180deg);
   border: 3px solid red;

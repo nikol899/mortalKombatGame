@@ -22,7 +22,7 @@ function startGame() {
             deck.appendChild(item);
 
         });
-        cardz[i].classList.remove("flip", "match");
+        cardz[i].classList.remove("flip");
 
     }
 

@@ -56,7 +56,7 @@ function startGame() {
         resetGame();
     }
     function unflipped() {
-       setTimeOut(() => {
+       setTimeOut(function(item) {
             guessOne.classList.remove("flip");
             guessTwo.classList.remove("flip");
             return;

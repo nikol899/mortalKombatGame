@@ -10,7 +10,6 @@ let selectedCards = [];
 let lock = false; // locks board prevents cards from flipping before are match or hidden
 
 
-
 function startGame() {
     selectedCards = []; // open cards array
 
@@ -56,11 +55,11 @@ function startGame() {
         resetGame();
     }
     function unflipped() {
-       setTimeOut(function(item) {
+      setInterval(() => {
             guessOne.classList.remove("flip");
             guessTwo.classList.remove("flip");
             return;
-        }, 2000)
+        }, 2000);
     }
     function resetGame() {
         [hasFlipped, lock] = [false, false];
@@ -83,7 +82,6 @@ function startGame() {
 
 }
 startGame();
-
 
 
 

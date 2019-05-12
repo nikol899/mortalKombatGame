@@ -1,48 +1,114 @@
 let card = document.getElementsByClassName("card");
 let cardz = [...card];
+<<<<<<< HEAD
 let count = 0; // keeps count of cards total of 12 in a deck
 let firstGuess = '';
 let secondGuess = '';
 let selectedCards = [];
 let clicked = selectedCards;
 
+=======
+let cardsMatched = document.getElementsByClassName("match");
+let setTimeOut = 0;
+const deck = document.getElementById("card-deck");
+>>>>>>> workingonmatch
 const cards = document.querySelectorAll('.card');
+let hasFlipped = false;
+let guessOne, guessTwo;
+let selectedCards = [];
+let lock = false; // locks board prevents cards from flipping before are match or hidden
 
+<<<<<<< HEAD
 function flipCard() {
     this.classList.toggle('flip');
     
 }
-
-cards.forEach(card => card.addEventListener('click', flipCard));
-
-console.log(cardz);
-
-const deck = document.getElementById("card-deck");
+=======
+>>>>>>> workingonmatch
 
 
-
-
-
-function shuffle(array) {
-
-
-    let currentIndex = array.length, temporaryValue, randomIndex;
-
-    while(currentIndex !==0){
-        randomIndex = Math.floor(Math.random()* currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-    return array;
-}
-document.body.onload = startGame();
-
-function startGame(){
+function startGame() {
+    selectedCards = []; // open cards array
 
     cardz = shuffle(cardz);
 
+<<<<<<< HEAD
+
+=======
+    for (let i = 0; i < 12; i++) {
+        deck.innerHTML = "";
+        [].forEach.call(cardz, function (item) {
+            deck.appendChild(item);
+>>>>>>> workingonmatch
+
+        });
+        cardz[i].classList.remove("flip", "match");
+
+    }
+
+    function flipCard() {
+        if (lock) return;
+        if (this === guessOne) return;
+
+        this.classList.add('flip');
+
+        if (!hasFlipped) {
+            hasFlipped = true;
+            guessOne = this;
+            return;
+        }
+        guessTwo = this;
+        lock = true;
+
+        matchCheck();
+    }
+    function matchCheck() {
+        if (guessOne.dataset.framework === guessTwo.dataset.framework) {
+            disable();
+            return;
+        }else {
+        unflipped();
+    }}
+
+    function disable() {
+        guessOne.removeEventListener("click", flipCard);
+        guessTwo.removeEventListener("click", flipCard);
+        resetGame();
+    }
+    function unflipped() {
+       setTimeOut(() => {
+            guessOne.classList.remove("flip");
+            guessTwo.classList.remove("flip");
+            return;
+        }, 2000)
+    }
+    function resetGame() {
+        [hasFlipped, lock] = [false, false];
+        [guessOne, guessTwo] = [null, null];
+    }
+    function shuffle(array) {
+        let currentIndex = array.length, temporaryValue, randomIndex;
+        while (currentIndex !== 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+        return array;
+    }
+    cards.forEach(card => card.addEventListener('click', flipCard));
+
+    console.log(cardz);
+
+}
+startGame();
+
+
+
+
+
+<<<<<<< HEAD
     for (let i =0; i< 12; i++){
         deck.innerHTML ="";
         [].forEach.call(cardz,function(item) {
@@ -112,3 +178,5 @@ MK_Memory.addEventListener("click", function (event) {
 //         card.classList.add('match')
 //     })
 // }
+=======
+>>>>>>> workingonmatch

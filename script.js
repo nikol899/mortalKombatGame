@@ -1,9 +1,6 @@
 "use strict";
-<<<<<<< HEAD
-=======
 
 
->>>>>>> Britt_Branch
 let roundNumber =1;
 let flippedCards=[]; // keep track of flipped cards in the array
 let count =0; // keeps count of cards total of 12 in a deck
@@ -21,7 +18,6 @@ function setRoundNumber() {
     document.querySelector(".startBtn").innerText=`Round : ${roundNumber}`;
 }
 
-<<<<<<< HEAD
 function addsEventsElements(){
     document.querySelector("main").addEventListener("click",function(event){
         if(event.target.classList.contains("startBtn")){
@@ -53,10 +49,8 @@ function cardShuffle(array){
         }
     }
     
-=======
-let card = document.getElementsByClassName("card");
+let card = document.getElementsByIdName("");
 	const arrayCards = [...card];
 	for( let i =0;i<cards.length; i++){
 	 
     }
->>>>>>> Britt_Branch

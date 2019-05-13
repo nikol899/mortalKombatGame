@@ -1,7 +1,7 @@
 let card = document.getElementsByClassName("card");
 let cardz = [...card];
 let cardsMatched = document.getElementsByClassName("match");
-let cardsUnmactch = document.getElementsByClassName("unmatch");
+let setTimeOut = 0;
 const deck = document.getElementById("card-deck");
 const cards = document.querySelectorAll('.card');
 let hasFlipped = false;
@@ -12,7 +12,8 @@ let lock = false; // locks board prevents cards from flipping before are match o
 document.querySelector("main").addEventListener("click",function(event){
     if(event.target.classList.contains("startBtn")){
         console.log(event);
-        startGame();
+        // startTimer();
+       startGame();
     }else{
         if(event.target.classList.contains("resetBtn")){
             resetBoard();
@@ -20,27 +21,26 @@ document.querySelector("main").addEventListener("click",function(event){
     }
 });
 
+let seconds = 0;
+let minutes =0;
 let interval;
 let timer = document.querySelector(".timer");
 timer.innerText = "0 mins 0 secs";
 clearInterval(interval);
 
-let seconds = 0;
-let minutes =0;
-// const timer = document.querySelector(`.timer`);
-
 function startTimer(){
-     interval = setInterval(function(){
-        timer.innerHTML = minutes+ "mins" + seconds + "sec";
-        seconds ++;
-        if(seconds == 60){
-            minutes ++ ;
-            seconds = 0;
-        }
-        if(minutes == 600)
-        minutes =0 ;
-    },1500);
+    interval = setInterval(function(){
+       timer.innerHTML = minutes + "mins" + seconds + "sec";
+       seconds ++;
+       if(seconds == 60){
+           minutes ++ ;
+           seconds = 0;
+       }
+       if(minutes == 600)
+       minutes =0 ;
+   },1500);
 } 
+
 function gameFinished(){
     if(cards.length === 12){
         clearInterval(interval)
@@ -49,6 +49,7 @@ function gameFinished(){
     }
 }
 function startGame() {
+   
     selectedCards = []; // open cards array
 
     cardz = shuffle(cardz);
@@ -59,16 +60,15 @@ function startGame() {
             deck.appendChild(item);
 
         });
-        cardz[i].classList.remove("flip", "match");
+        cardz[i].classList.remove("flip","match");
+
     }
-}
+  
 
     function flipCard() {
-        
         if (lock) return;
         if (this === guessOne) 
         return;
-        startTimer();
         this.classList.add('flip');
 
         if (!hasFlipped) {
@@ -77,42 +77,35 @@ function startGame() {
             return;
         }
         guessTwo = this;
-       
-
+        
         matchCheck();
     }
-  
     function matchCheck() {
         if (guessOne.dataset.framework === guessTwo.dataset.framework) {
-            // this.classList.push(selectedCards);
-            // console.log(selectedCards);
-            matched();
+            disable();
             return;
-        } else {
-            unmatched();
-        }
-    }
+        }else {
+        unflipped();
+    }}
 
-    function matched() {
+    function disable() {
         guessOne.removeEventListener("click", flipCard);
         guessTwo.removeEventListener("click", flipCard);
-
         resetGame();
     }
-    function unmatched() {
-        setTimeout(() => {
-            guessOne.classList.remove("flip","unmatch");
-            guessTwo.classList.remove("flip","unmatch");
-             resetGame();
+    function unflipped() {
+        lock =false;
+      setTimeout(() => {
+            guessOne.classList.remove("flip");
+            guessTwo.classList.remove("flip");
+            return;
         }, 1000);
+        // clearTimeout();
     }
     function resetGame() {
-        hasFlipped = false;
-        lock = false;
-        guessOne = null
-        guessTwo = null
+        [hasFlipped, lock] = [false, false];
+        [guessOne, guessTwo] = [null, null];
     }
-   
     function shuffle(array) {
         let currentIndex = array.length, temporaryValue, randomIndex;
         while (currentIndex !== 0) {
@@ -127,5 +120,12 @@ function startGame() {
     cards.forEach(card => card.addEventListener('click', flipCard));
 
     console.log(cardz);
+    console.log(guessOne);
+    console.log(guessTwo);
 
+}
 // startGame();
+
+
+
+

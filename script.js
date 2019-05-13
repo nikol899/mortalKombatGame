@@ -23,48 +23,11 @@ function setRoundNumber() {
     document.querySelector(".startBtn").innerText=`Round : ${roundNumber}`;
 }
 
-<<<<<<< HEAD
-function addsEventsElements(){
-    document.querySelector("main").addEventListener("click",function(event){
-        if(event.target.classList.contains("startBtn")){
-            startGame();
-            console.log(event);
-        }else if(event.target.classList.contains("resetBtn"));{
-            // resets the board and shuffle cards
-        }
-    }
-    )};
-function cardShuffle(array){
-    let currentIndex = cardsArray.length, tempCards, randomCards;
-    while (currentIndex !== 0) {
-        randomCards = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        tempCards = cardsArray[currentIndex];
-        cardsArray[currentIndex] = cardsArray[randomCards];
-        cardsArray[randomCards] = tempCards;
-    }
-
-    return  array;
-};
-
-    function startGame(){
-        cardShuffle();
-        if(firstChildElement[0].value === cardsArray.firstChildElement[1].value){
-            
-
-        }
-    }
-    
-let card = document.getElementsByIdName("");
-=======
 let card = document.getElementsByClassName("card");
->>>>>>> workingonmatch
 	const arrayCards = [...card];
 	for( let i =0;i<cards.length; i++){
 	 
     }
-<<<<<<< HEAD
-=======
 // deck of all cards
 const deck = document.getElementById("card-deck");
 // counts # of moves
@@ -121,4 +84,3 @@ function startGame(){
 // } previousChoice=event.target;
 
 // })
->>>>>>> workingonmatch

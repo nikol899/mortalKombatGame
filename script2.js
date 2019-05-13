@@ -10,6 +10,19 @@ let guessOne,guessTwo;
 let selectedCards = [];
 let lock = false; // locks board prevents cards from flipping before are match or hidden
 
+//1. Create the button
+let button = document.createElement("button");
+button.innerText = "Test your might if you are worthy";
+
+let main=document.querySelector("main");
+body.append(button);
+//2 Add event listner
+button.addEventListener("click",function(){
+    alert("Test your might if you are worth");
+    startGame();
+});
+
+
 
 function startGame() {
     selectedCards = []; // open cards array
@@ -26,7 +39,6 @@ function startGame() {
        
     }
 }
-
 
     function flipCard() {
         if (lock) return;
@@ -93,5 +105,5 @@ function startGame() {
 
     console.log(cardz);
 
-startGame();
+// startGame();
 

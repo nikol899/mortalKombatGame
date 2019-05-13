@@ -55,15 +55,17 @@ function startGame() {
         resetGame();
     }
     function unflipped() {
-      setInterval(() => {
+      setTimeout(() => {
             guessOne.classList.remove("flip");
             guessTwo.classList.remove("flip");
             return;
-        }, 2000);
+        }, 1000);
     }
     function resetGame() {
-        [hasFlipped, lock] = [false, false];
-        [guessOne, guessTwo] = [null, null];
+        hasFlipped = false;
+        lock = false;
+        guessOne = null
+        guessTwo = null
     }
     function shuffle(array) {
         let currentIndex = array.length, temporaryValue, randomIndex;

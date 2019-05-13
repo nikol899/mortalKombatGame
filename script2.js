@@ -6,7 +6,6 @@ const deck = document.getElementById("card-deck");
 const cards = document.querySelectorAll('.card');
 let hasFlipped = false;
 let guessOne,guessTwo;
-
 let selectedCards = [];
 let lock = false; // locks board prevents cards from flipping before are match or hidden
 
@@ -42,7 +41,13 @@ function startTimer(){
         minutes =0 ;
     },1500);
 } 
+function gameFinished(){
+    if(cards.length === 12){
+        clearInterval(interval)
 
+        modal.classList.add("show");
+    }
+}
 function startGame() {
     selectedCards = []; // open cards array
 

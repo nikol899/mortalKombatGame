@@ -1,11 +1,12 @@
 let card = document.getElementsByClassName("card");
 let cardz = [...card];
 let cardsMatched = document.getElementsByClassName("match");
-let setTimeOut = 0;
+let cardsUnmactch = document.getElementsByClassName("unmatch");
 const deck = document.getElementById("card-deck");
 const cards = document.querySelectorAll('.card');
 let hasFlipped = false;
-let guessOne, guessTwo;
+let guessOne,guessTwo;
+
 let selectedCards = [];
 let lock = false; // locks board prevents cards from flipping before are match or hidden
 
@@ -21,13 +22,16 @@ function startGame() {
             deck.appendChild(item);
 
         });
-        cardz[i].classList.remove("flip", "match");
-
+        cardz[i].classList.remove("flip", "match","unmatch");
+       
     }
+}
+
 
     function flipCard() {
         if (lock) return;
-        if (this === guessOne) return;
+        if (this === guessOne) 
+        return;
 
         this.classList.add('flip');
 
@@ -37,33 +41,42 @@ function startGame() {
             return;
         }
         guessTwo = this;
-        lock = true;
+       
 
         matchCheck();
     }
+  
     function matchCheck() {
         if (guessOne.dataset.framework === guessTwo.dataset.framework) {
-            disable();
+            matched();
             return;
-        }else {
-        unflipped();
-    }}
+        } else {
+            unmatched();
+        }
+    }
 
-    function disable() {
+    function matched() {
         guessOne.removeEventListener("click", flipCard);
         guessTwo.removeEventListener("click", flipCard);
+        selectedCards =[];
         resetGame();
     }
-    function unflipped() {
-      setInterval(() => {
-            guessOne.classList.remove("flip");
-            guessTwo.classList.remove("flip");
-            return;
-        }, 2000);
+    function unmatched() {
+        setTimeout(() => {
+            guessOne.classList.remove("flip","unmatch");
+            guessTwo.classList.remove("flip","unmatch");
+
+            resetGame();
+        }, 1000);
     }
     function resetGame() {
-        [hasFlipped, lock] = [false, false];
-        [guessOne, guessTwo] = [null, null];
+        hasFlipped = false;
+        lock = false;
+        guessOne = "";
+        guessTwo = "";
+
+
+
     }
     function shuffle(array) {
         let currentIndex = array.length, temporaryValue, randomIndex;
@@ -80,9 +93,5 @@ function startGame() {
 
     console.log(cardz);
 
-}
 startGame();
-
-
-
 

@@ -37,7 +37,13 @@ img.back-face{
   backface-visibility: hidden;
 
 }
+.timer{
+  background-color: orange;
+  text-decoration: brown;
+  width: 200px;
+  font-size: 30px;
 
+}
 .match{
 
   border: 3px solid orange;

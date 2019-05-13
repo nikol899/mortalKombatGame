@@ -8,7 +8,7 @@ let hasFlipped = false;
 let guessOne, guessTwo;
 let selectedCards = [];
 let lock = false; // locks board prevents cards from flipping before are match or hidden
-let startButton = document.getElementsById('start');
+
 
 document.querySelector("main").addEventListener("click",function(event){
     if(event.target.classList.contains("startBtn")){

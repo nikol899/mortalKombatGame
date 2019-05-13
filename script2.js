@@ -1,14 +1,16 @@
 let card = document.getElementsByClassName("card");
 let cardz = [...card];
 let cardsMatched = document.getElementsByClassName("match");
-
+let setTimeOut = 0;
 const deck = document.getElementById("card-deck");
 const cards = document.querySelectorAll('.card');
 let hasFlipped = false;
-
+let guessOne, guessTwo;
 let selectedCards = [];
 let lock = false; // locks board prevents cards from flipping before are match or hidden
+let startButton = document.getElementsById('start');
 
+startButton.addEventListener('click', startGame);
 
 function startGame() {
     selectedCards = []; // open cards array
@@ -21,7 +23,7 @@ function startGame() {
             deck.appendChild(item);
 
         });
-        cardz[i].classList.remove("flip", "match");
+        cardz[i].classList.remove("flip");
 
     }
 
@@ -62,7 +64,6 @@ function startGame() {
         }, 2000);
     }
     function resetGame() {
-    
         [hasFlipped, lock] = [false, false];
         [guessOne, guessTwo] = [null, null];
     }

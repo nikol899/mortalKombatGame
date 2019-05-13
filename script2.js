@@ -23,7 +23,7 @@ document.querySelector("main").addEventListener("click",function(event){
 
 let interval;
 let timer = document.querySelector(".timer");
-timer.innerHTML = "0 mins 0 secs";
+timer.innerText = "0 mins 0 secs";
 clearInterval(interval);
 
 let seconds = 0;
@@ -34,16 +34,14 @@ function startTimer(){
      interval = setInterval(function(){
         timer.innerHTML = minutes+ "mins" + seconds + "sec";
         seconds ++;
-        if(seconds === 60){
+        if(seconds == 60){
             minutes ++ ;
             seconds = 0;
         }
-    },1000);
-}
-
-
-
-
+        if(minutes == 600)
+        minutes =0 ;
+    },1500);
+} 
 
 function startGame() {
     selectedCards = []; // open cards array
@@ -61,11 +59,11 @@ function startGame() {
 }
 
     function flipCard() {
-        startTimer();
+        
         if (lock) return;
         if (this === guessOne) 
         return;
-
+        startTimer();
         this.classList.add('flip');
 
         if (!hasFlipped) {

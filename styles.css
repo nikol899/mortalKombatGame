@@ -27,8 +27,8 @@ background-image: url(MK-headShots/Mortal-Kombat-11-Logo-Mobile.jpg);
 
 }
 
-.Btn{
-  background-color: red;
+.startBtn{
+  background-color: rgb(202, 42, 42);
   border: 3px solid;
 }
 
@@ -42,7 +42,13 @@ img.back-face{
   backface-visibility: hidden;
 
 }
+.timer{
+  background-color: orange;
+  text-decoration: brown;
+  width: 200px;
+  font-size: 30px;
 
+}
 .match{
 
   border: 3px solid orange;

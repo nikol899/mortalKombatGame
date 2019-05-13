@@ -8,9 +8,40 @@ let hasFlipped = false;
 let guessOne, guessTwo;
 let selectedCards = [];
 let lock = false; // locks board prevents cards from flipping before are match or hidden
-let startButton = document.getElementsById('start');
 
-startButton.addEventListener('click', startGame);
+
+document.querySelector("main").addEventListener("click",function(event){
+    if(event.target.classList.contains("startBtn")){
+        console.log(event);
+        startGame();
+    }else{
+        if(event.target.classList.contains("resetBtn")){
+            resetBoard();
+        }
+    }
+});
+
+let interval;
+let timer = document.querySelector(".timer");
+timer.innerText = "0 mins 0 secs";
+clearInterval(interval);
+
+let seconds = 0;
+let minutes =0;
+// const timer = document.querySelector(`.timer`);
+
+function startTimer(){
+     interval = setInterval(function(){
+        timer.innerHTML = minutes+ "mins" + seconds + "sec";
+        seconds ++;
+        if(seconds == 60){
+            minutes ++ ;
+            seconds = 0;
+        }
+        if(minutes == 600)
+        minutes =0 ;
+    },1500);
+} 
 
 function startGame() {
     selectedCards = []; // open cards array
@@ -28,9 +59,11 @@ function startGame() {
     }
 
     function flipCard() {
+        
         if (lock) return;
-        if (this === guessOne) return;
-
+        if (this === guessOne) 
+        return;
+        startTimer();
         this.classList.add('flip');
 
         if (!hasFlipped) {

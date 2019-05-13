@@ -15,6 +15,7 @@ document.querySelector("main").addEventListener("click",function(event){
         console.log(event);
         // startTimer();
        startGame();
+       startTimer();
     }else{
         if(event.target.classList.contains("resetBtn")){
             resetBoard();
@@ -43,12 +44,17 @@ function startTimer(){
 } 
 
 function gameFinished(){
-    if(cards.length === 12){
-        clearInterval(interval)
+    if(deck.length === 12){
+        clearInterval(interval);
+        finalTime = timer.innerHTML;
 
         modal.classList.add("show");
+
+        document.getElementById("totalTime").innerHTML=finalTime;
+        closeModal();
+    };
     }
-}
+
 function startGame() {
    
     selectedCards = []; // open cards array
@@ -90,6 +96,7 @@ function startGame() {
     }}
 
     function disable() {
+        lock =false;
         guessOne.removeEventListener("click", flipCard);
         guessTwo.removeEventListener("click", flipCard);
         resetGame();
@@ -99,11 +106,12 @@ function startGame() {
             guessOne.classList.remove("flip");
             guessTwo.classList.remove("flip");
             return;
-        }, 2000);
-    }
+          
+        }, 2000); 
+    } clearTimeout();
     function resetGame() {
         [hasFlipped, lock] = [false, false];
-        [guessOne, guessTwo] = [null, null];
+        [guessOne, guessTwo] = [null,null];
     }
     function shuffle(array) {
         let currentIndex = array.length, temporaryValue, randomIndex;

@@ -10,17 +10,15 @@ let guessOne,guessTwo;
 let selectedCards = [];
 let lock = false; // locks board prevents cards from flipping before are match or hidden
 
-//1. Create the button
-let button = document.createElement("button");
-button.innerText = "Test your might if you are worthy";
-
-let main=document.querySelector("main");
-body.append(button);
-//2 Add event listner
-button.addEventListener("click",function(){
-    alert("Test your might if you are worth");
-    startGame();
-});
+// document.querySelector("main").addEventListener("click",function(event){
+//     if(event.target.classList.contains("startBtn")){
+//         startGame();
+//     }else{
+//         if(event.target.classList.contains("resetBtn")){
+//             resetBoard();
+//         }
+//     }
+// });
 
 
 
@@ -35,8 +33,7 @@ function startGame() {
             deck.appendChild(item);
 
         });
-        cardz[i].classList.remove("flip", "match","unmatch");
-       
+        cardz[i].classList.remove("flip", "match");
     }
 }
 
@@ -60,6 +57,8 @@ function startGame() {
   
     function matchCheck() {
         if (guessOne.dataset.framework === guessTwo.dataset.framework) {
+            // this.classList.push(selectedCards);
+            // console.log(selectedCards);
             matched();
             return;
         } else {
@@ -70,26 +69,23 @@ function startGame() {
     function matched() {
         guessOne.removeEventListener("click", flipCard);
         guessTwo.removeEventListener("click", flipCard);
-        selectedCards =[];
+
         resetGame();
     }
     function unmatched() {
         setTimeout(() => {
             guessOne.classList.remove("flip","unmatch");
             guessTwo.classList.remove("flip","unmatch");
-
-            resetGame();
+             resetGame();
         }, 1000);
     }
     function resetGame() {
         hasFlipped = false;
         lock = false;
-        guessOne = "";
-        guessTwo = "";
-
-
-
+        guessOne = null
+        guessTwo = null
     }
+   
     function shuffle(array) {
         let currentIndex = array.length, temporaryValue, randomIndex;
         while (currentIndex !== 0) {
@@ -106,4 +102,3 @@ function startGame() {
     console.log(cardz);
 
 // startGame();
-

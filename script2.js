@@ -38,7 +38,7 @@ function startTimer(){
             minutes ++ ;
             seconds = 0;
         }
-        if(minutes == 600)
+        if(minutes == 60)
         minutes =0 ;
     },1500);
 } 

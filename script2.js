@@ -5,9 +5,10 @@ let setTimeOut = 0;
 const deck = document.getElementById("card-deck");
 const cards = document.querySelectorAll('.card');
 let hasFlipped = false;
-let guessOne,guessTwo;
+let guessOne, guessTwo;
 let selectedCards = [];
 let lock = false; // locks board prevents cards from flipping before are match or hidden
+
 
 document.querySelector("main").addEventListener("click",function(event){
     if(event.target.classList.contains("startBtn")){
@@ -29,16 +30,16 @@ timer.innerText = "0 mins 0 secs";
 clearInterval(interval);
 
 function startTimer(){
-    interval = setInterval(function(){
-       timer.innerHTML = minutes + "mins" + seconds + "sec";
-       seconds ++;
-       if(seconds == 60){
-           minutes ++ ;
-           seconds = 0;
-       }
-       if(minutes == 600)
-       minutes =0 ;
-   },1500);
+     interval = setInterval(function(){
+        timer.innerHTML = minutes+ "mins" + seconds + "sec";
+        seconds ++;
+        if(seconds == 60){
+            minutes ++ ;
+            seconds = 0;
+        }
+        if(minutes == 60)
+        minutes =0 ;
+    },1500);
 } 
 
 function gameFinished(){
@@ -60,10 +61,9 @@ function startGame() {
             deck.appendChild(item);
 
         });
-        cardz[i].classList.remove("flip","match");
+        cardz[i].classList.remove("flip");
 
     }
-  
 
     function flipCard() {
         if (lock) return;
@@ -77,7 +77,8 @@ function startGame() {
             return;
         }
         guessTwo = this;
-        
+        lock = true;
+
         matchCheck();
     }
     function matchCheck() {
@@ -94,13 +95,11 @@ function startGame() {
         resetGame();
     }
     function unflipped() {
-        lock =false;
-      setTimeout(() => {
+      setInterval(() => {
             guessOne.classList.remove("flip");
             guessTwo.classList.remove("flip");
             return;
-        }, 1000);
-        // clearTimeout();
+        }, 2000);
     }
     function resetGame() {
         [hasFlipped, lock] = [false, false];
@@ -124,7 +123,7 @@ function startGame() {
     console.log(guessTwo);
 
 }
-// startGame();
+startGame();
 
 
 
